@@ -66,6 +66,8 @@ The extension provides several configuration values, which can be added to your 
 
 For each of the five GitHub alerts, you can see the result below. Note that the result depends on where you are visiting this page.
 
+The codes contain a leading space to enforce showing the code and not converting the code. In any application these leading spaces should not be present.
+
 ### Note
 
 ```
@@ -79,8 +81,8 @@ For each of the five GitHub alerts, you can see the result below. Note that the 
 ### Tip
 
 ```
-> [!TIP]
-> Helpful advice for doing things better or more easily.
+ > [!TIP]
+ > Helpful advice for doing things better or more easily.
 ```
 
 > [!TIP]
@@ -89,8 +91,8 @@ For each of the five GitHub alerts, you can see the result below. Note that the 
 ### Important
 
 ```
-> [!IMPORTANT]
-> Key information users need to know to achieve their goal.
+ > [!IMPORTANT]
+ > Key information users need to know to achieve their goal.
 ```
 
 > [!IMPORTANT]
@@ -99,8 +101,8 @@ For each of the five GitHub alerts, you can see the result below. Note that the 
 ### Warning
 
 ```
-> [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
+ > [!WARNING]
+ > Urgent info that needs immediate user attention to avoid problems.
 ```
 
 > [!WARNING]
@@ -109,10 +111,10 @@ For each of the five GitHub alerts, you can see the result below. Note that the 
 ### Caution
 
 ```
-> [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
->
-> But multiline alerts can also be used.
+ > [!CAUTION]
+ > Advises about risks or negative outcomes of certain actions.
+ >
+ > But multiline alerts can also be used.
 ```
 
 > [!CAUTION]
