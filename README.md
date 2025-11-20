@@ -1,4 +1,4 @@
-# Sphinx-GitHub-Alerts
+# Sphinx GitHub Alerts
 
 ## Introduction
 
