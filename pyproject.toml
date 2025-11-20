@@ -3,20 +3,19 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sphinx-apa-references"
+name = "sphinx-github-alerts"
 dynamic=["version"]
 authors = [
-    { name = "Dennis den Ouden-van der Horst", email = "d.denouden-vanderhorst@tudelft.nl" },
-    { name = "Robert Lanzafame", email = "lanzafame.robert@gmail.com" }
+    { name = "Dennis den Ouden-van der Horst", email = "d.denouden-vanderhorst@tudelft.nl" }
 ]
-description = "A simple Sphinx extension that allows you to have APA formatting of references in your book."
+description = "This Sphinx extension converts GitHub alerts to Sphinx admonitions."
 readme = "README.md"
 dependencies = [
-    "sphinx",
-    "pybtex"
+    "sphinx"
 ]
 requires-python = ">=3.10"
 
 [tool.hatch]
 version.source = "vcs"
-build.hooks.vcs.version-file = "src/sphinx_apa_references/_version.py"
+build.hooks.vcs.version-file = "src/sphinx_github_alerts/_version.py"
+
