@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sphinx-apa-references"
+dynamic=["version"]
+authors = [
+    { name = "Dennis den Ouden-van der Horst", email = "d.denouden-vanderhorst@tudelft.nl" },
+    { name = "Robert Lanzafame", email = "lanzafame.robert@gmail.com" }
+]
+description = "A simple Sphinx extension that allows you to have APA formatting of references in your book."
+readme = "README.md"
+dependencies = [
+    "sphinx",
+    "pybtex"
+]
+requires-python = ">=3.10"
+
+[tool.hatch]
+version.source = "vcs"
+build.hooks.vcs.version-file = "src/sphinx_apa_references/_version.py"
