@@ -130,8 +130,10 @@ def setup(app):
     app.connect('source-read', convert_github_alerts)
     
     return {
+        "version": "builtin",
         'parallel_read_safe': True,
         'parallel_write_safe': True,
     }
+
 
 
