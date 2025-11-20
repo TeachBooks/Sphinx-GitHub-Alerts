@@ -6,7 +6,7 @@ This Sphinx extension converts GitHub alerts to Sphinx admonitions.
 
 ## What does it do?
 
-This extension allows you to use [GitHub alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) within your Sphinx project.
+This extension allows you to use [GitHub alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) within your Sphinx project. This is particulary useful if you're editing your sphinx / jupyterbook / teachbook in GitHub, making use of GitHub alerts and the markdown previewer of GitHub. Your Sphinx project will look similar to the preview in GitHub for these GitHub alerts.
 
 Only top-level alerts are allowed and are convert to a top-level admonition in the language (`MD` or `rST`) of the source file. The source file does not change.
 
@@ -51,7 +51,7 @@ sphinx:
 or in your `conf.py` file, add the extension to the `extensions` list and specify the location of your bib file:
 
 ```python
-extensions = [...,"sphinx_apa_references",...]
+extensions = [...,"sphinx_github_alerts",...]
 ```
 
 ## Configuration
