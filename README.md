@@ -78,20 +78,42 @@ For each of the five GitHub alerts, you can see the result below. Note that the 
 
 ### Tip
 
+```
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+```
+
 > [!TIP]
 > Helpful advice for doing things better or more easily.
 
 ### Important
+
+```
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+```
 
 > [!IMPORTANT]
 > Key information users need to know to achieve their goal.
 
 ### Warning
 
+```
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+```
+
 > [!WARNING]
 > Urgent info that needs immediate user attention to avoid problems.
 
 ### Caution
+
+```
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+>
+> But multiline alerts can also be used.
+```
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
