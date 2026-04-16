@@ -68,7 +68,7 @@ def convert_github_alerts(app, docname, source):
     EXTENDED_TYPES = RECOGNISED_TYPES.copy() | app.env.config.sphinx_github_alerts_redirects
     quotes = '`'*(app.env.config.sphinx_github_alerts_backquotes)
 
-    for i,match in enumerate(matches):
+    for match in matches:
         block = match.group(0)
         # Process each block here
         first_line = block.splitlines()[0]
