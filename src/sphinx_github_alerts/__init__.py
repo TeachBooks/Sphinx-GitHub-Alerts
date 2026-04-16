@@ -55,13 +55,11 @@ def convert_github_alerts(app, docname, source):
         type_pattern = r'\s*\">\s*\[!(\w+)\]' # Pattern to extract type from first line, allowing leading spaces
         strip_pattern = r'^\s*\">\s?' # Pattern to strip leading '> ' from each line
         new_pattern = r'"'
-        arrows_pattern = r'^\s*\"(?:>\s*)+'
     else: # meaning .md or *.rst
         pattern = r'^(?:>.*\n?)+' # Matches one or more consecutive lines starting with '>'
         type_pattern = r'>\s*\[!(\w+)\]' # Pattern to extract type from first line
         strip_pattern = r'^>\s?' # Pattern to strip leading '> ' from each line
         new_pattern = r''
-        arrows_pattern = r'^(?:>\s*)+'
     
     # Find all matches
     matches = re.finditer(pattern, content, re.MULTILINE)
