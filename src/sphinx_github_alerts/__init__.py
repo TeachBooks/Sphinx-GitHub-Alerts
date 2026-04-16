@@ -48,8 +48,6 @@ def convert_github_alerts(app, docname, source):
 
     # Find each block within the source
     content = source[0]
-    # store old content for comparison
-    old_content = content
     
     # Pattern to find consecutive lines starting with '>'
     if source_file.endswith('.ipynb'):
