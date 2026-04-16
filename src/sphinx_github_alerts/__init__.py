@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 from sphinx.util import logging
 from sphinx.errors import ConfigError
@@ -35,8 +36,8 @@ def validate_sphinx_github_alerts_config(app, config):
         raise ConfigError("sphinx_github_alerts_backquotes must be an integer >= 3.")
 
 def convert_github_alerts(app, docname, source):
-    source_file = app.env.doc2path(docname)
-    if not(source_file.endswith('.md') or source_file.endswith('.ipynb') or source_file.endswith('.rst')):
+    source_file = Path(app.env.doc2path(docname))
+    if source_file.suffix not in {'.md', '.ipynb', '.rst'}:
         logger.warning(f"Unrecognised source file type for '{source_file}', skipping...",location=docname)
         pass
     """Replace GitHub alerts with Sphinx admonitions."""
@@ -52,7 +53,7 @@ def convert_github_alerts(app, docname, source):
     old_content = content
     
     # Pattern to find consecutive lines starting with '>'
-    if source_file.endswith('.ipynb'):
+    if source_file.suffix == '.ipynb':
         pattern = r'^(?:\s*\">.*\n?)+' # Matches one or more consecutive lines starting with '>', allowing leading spaces
         type_pattern = r'\s*\">\s*\[!(\w+)\]' # Pattern to extract type from first line, allowing leading spaces
         strip_pattern = r'^\s*\">\s?' # Pattern to strip leading '> ' from each line
@@ -85,16 +86,17 @@ def convert_github_alerts(app, docname, source):
                 # exclude first line
                 stripped_block = '\n'.join([re.sub(strip_pattern, new_pattern, line) for line in block.splitlines()[1:]])
                 # create replacement admonition block depending on original source type (.md, .ipynb or .rst)
-                if source_file.endswith('.md'):
+                replacement = None
+                if source_file.suffix == '.md':
                     replacement = f"\n{quotes}{{{EXTENDED_TYPES[type_match]}}}\n{stripped_block}\n{quotes}\n"
-                elif source_file.endswith('.ipynb'):
+                elif source_file.suffix == '.ipynb':
                     # make sure to add the necessary quotes and commas for ipynb format
                     if stripped_block[-1] == '"':
                         stripped_block = stripped_block[:-1] + '\\n",'
                         replacement = f"\n\"{quotes}{{{EXTENDED_TYPES[type_match]}}}\\n\",\n{stripped_block}\n\"{quotes}\\n\""
                     else:
                         replacement = f"\n\"{quotes}{{{EXTENDED_TYPES[type_match]}}}\\n\",\n{stripped_block}\n\"{quotes}\\n\",\n"
-                elif source_file.endswith('.rst'):
+                elif source_file.suffix == '.rst':
                     replacement = f"\n.. {EXTENDED_TYPES[type_match]}:: \n\n"
                     # indent each line of stripped_block by set number of leading spaces
                     indent = " " * app.env.config.sphinx_github_alerts_leading_spaces
@@ -134,6 +136,3 @@ def setup(app):
         'parallel_read_safe': True,
         'parallel_write_safe': True,
     }
-
-
-
