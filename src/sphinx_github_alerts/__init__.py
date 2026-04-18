@@ -49,8 +49,6 @@ def convert_github_alerts(app, docname, source):
 
     # Find each block within the source
     content = source[0]
-    # store old content for comparison
-    old_content = content
     
     # Pattern to find consecutive lines starting with '>'
     if source_file.suffix == '.ipynb':
@@ -58,13 +56,11 @@ def convert_github_alerts(app, docname, source):
         type_pattern = r'\s*\">\s*\[!(\w+)\]' # Pattern to extract type from first line, allowing leading spaces
         strip_pattern = r'^\s*\">\s?' # Pattern to strip leading '> ' from each line
         new_pattern = r'"'
-        arrows_pattern = r'^\s*\"(?:>\s*)+'
     else: # meaning .md or *.rst
         pattern = r'^(?:>.*\n?)+' # Matches one or more consecutive lines starting with '>'
         type_pattern = r'>\s*\[!(\w+)\]' # Pattern to extract type from first line
         strip_pattern = r'^>\s?' # Pattern to strip leading '> ' from each line
         new_pattern = r''
-        arrows_pattern = r'^(?:>\s*)+'
     
     # Find all matches
     matches = re.finditer(pattern, content, re.MULTILINE)
@@ -73,7 +69,7 @@ def convert_github_alerts(app, docname, source):
     EXTENDED_TYPES = RECOGNISED_TYPES.copy() | app.env.config.sphinx_github_alerts_redirects
     quotes = '`'*(app.env.config.sphinx_github_alerts_backquotes)
 
-    for i,match in enumerate(matches):
+    for match in matches:
         block = match.group(0)
         # Process each block here
         first_line = block.splitlines()[0]
